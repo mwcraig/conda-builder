@@ -26,6 +26,8 @@ install:
   - source continuous-integration/travis/install_$TRAVIS_OS_NAME.sh
 
 script:
+  - if [[ $CONDA_NPY == 16 && $CONDA_PY == 3* ]]; then conda build numpy-1.6 --quiet; fi
+  - if [[ $CONDA_NPY == 17 && $CONDA_PY == 3* ]]; then conda build numpy-1.7 --quiet; fi
   - conda build astropy-0.4 --quiet
   - conda build astropy-1.0 --quiet
 
